@@ -1,0 +1,26 @@
+.container {
+  width: 100%;
+  min-height: 620px;
+  height: 100vh;
+  padding: 100px 64px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+  line-height: 2.5;
+  background-color: rgba(228, 72, 72, 0.2);
+}
+
+.backHome {
+  margin: 50px auto;
+  padding: 12px 20px;
+  background-color: transparent;
+  border: 2px solid var(--main-color);
+  border-radius: 8px;
+  background-color: var(--accent-color);
+  transition: var(--anim);
+}
+
+.backHome:hover {
+  color: var(--main-white);
+  background-color: var(--accent-second-color);
+}

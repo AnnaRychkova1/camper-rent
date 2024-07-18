@@ -1,0 +1,43 @@
+.navigation {
+  /* max-width: 1280px; */
+  /* margin: 0 16px; */
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding: 16px;
+  border-top: 4px solid var(--main-color);
+  border-bottom: 4px solid var(--main-color);
+  gap: 16px;
+  background-color: var(--accent-second-color);
+  /* background-color: rgba(216, 67, 67, 0.6); */
+}
+
+.navLink {
+  display: flex;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: var(--second-color);
+  background-color: var(--accent-color);
+  border: 1px solid var(--main-color);
+  border-radius: 8px;
+  transition: var(--anim);
+}
+
+.navLink:hover {
+  color: var(--main-white);
+  background-color: var(--accent-second-color);
+  border: 1px solid var(--main-color);
+}
+
+.active {
+  color: var(--accent-second-color);
+  background-color: var(--main-white);
+  border: 1px solid var(--second-color);
+  transition: var(--anim);
+}
+
+@media only screen and (min-width: 768px) {
+  .navigation {
+    gap: 30px;
+  }
+}
