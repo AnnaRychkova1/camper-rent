@@ -1,13 +1,14 @@
-import { useModalContext } from '../../context/useModalContext';
-import CamperModal from '../CamperModal/CamperModal';
+import { useState } from 'react';
 import Iconsvg from '../Icon/Icon';
 import css from './CamperCard.module.css';
+import CamperModal from '../../modal/CamperModal';
 
 const CamperCard = camper => {
-  const { openModal } = useModalContext();
-  const handleOpenModal = () => {
-    openModal(<CamperModal />);
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <>
       <img
@@ -20,7 +21,7 @@ const CamperCard = camper => {
           <div className={css.camperTitle}>
             <h3>{camper.name}</h3>
             <div className={css.camperTop}>
-              &#8364;{camper.price}.00{' '}
+              <span>&#8364;{camper.price}.00 </span>
               <button type="button" className={css.addToFavorite}>
                 <Iconsvg iconName="heart" className={css.iconHeart} />
               </button>
@@ -33,7 +34,8 @@ const CamperCard = camper => {
               &#x2768;{camper.reviews.length} Reviews&#x2769;
             </p>
             <Iconsvg iconName="mapPin" className={css.iconMap} />
-            <p className={css.camperLocation}>{camper.location}</p>
+            {/* <p className={css.camperLocation}>{camper.location}</p> */}
+            <p>{camper.location}</p>
           </div>
         </div>
 
@@ -91,10 +93,15 @@ const CamperCard = camper => {
           )}
         </ul>
 
-        <button className={css.showMore} onClick={handleOpenModal}>
+        <button className={css.showMore} onClick={openModal}>
           Show more
         </button>
       </div>
+      <CamperModal
+        isOpen={isModalOpen}
+        closeModal={closeModal}
+        camper={camper}
+      />
     </>
   );
 };

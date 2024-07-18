@@ -9,7 +9,8 @@
   align-items: center;
   gap: 20px;
   width: 100%;
-  background-image: url('../../assets/icons-maket/lake-6980384_1280.jpg');
+  background-color: rgba(228, 72, 72, 0.2);
+  background-image: url('../../assets/nature.jpg');
   background-size: 1280px 732px;
   background-repeat: no-repeat;
   background-size: cover;

@@ -1,9 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-// import { Toaster } from 'react-hot-toast';
 
 import Loader from './components/Loader/Loader';
-import Modals from './components/CamperModal/Modals';
 import { Navigation } from './components/Navigation/Navigation';
 
 export const Layout = () => {
@@ -15,7 +13,6 @@ export const Layout = () => {
           <Outlet />
         </main>
       </Suspense>
-      <Modals />
 
       {/* <Toaster
         position="top-center"

@@ -85,6 +85,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--second-color);
 }
 
 .camperPros {
