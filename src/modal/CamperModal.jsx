@@ -2,7 +2,10 @@ import Modal from 'react-modal';
 import css from './CamperModal.module.css';
 import Iconsvg from '../components/Icon/Icon';
 import { useState } from 'react';
-import BookForm from '../components/BookForm/BookForm';
+import BookingForm from '../components/BookingForm/BookingForm';
+import AdvantagesList from '../components/AdvantagesList/AdvantagesList';
+import CamperTable from '../components/CamperTable/CamperTable';
+import ReviewsList from '../components/ReviewsList/ReviewsList';
 
 Modal.setAppElement('#root');
 
@@ -88,17 +91,19 @@ const CamperModal = ({ isOpen, closeModal, camper }) => {
           }
         >
           <div className={css.featuresInfo}>
-            <ul>
-              <li></li>
-            </ul>
+            <AdvantagesList camper={camper} />
+            <h3 className={css.featuresTitle}>Vehicle details</h3>
+            <CamperTable camper={camper} />
           </div>
-          <BookForm />
+          <BookingForm />
         </div>
         <div
           className={activeTab === 'Reviews' ? css.activeContainer : css.hidden}
         >
-          <div className={css.reviewsInfo}>Reviews Content</div>
-          <BookForm />
+          <div className={css.reviewsInfo}>
+            <ReviewsList reviews={camper.reviews} />
+          </div>
+          <BookingForm />
         </div>
       </div>
     </Modal>

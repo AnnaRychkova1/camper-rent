@@ -27,7 +27,6 @@ const Catalog = () => {
   const handleLoadMore = () => {
     setVisibleCards(prevCount => prevCount + 4);
   };
-  console.log(adverts);
   return (
     <>
       <DocumentTitle>Catalog</DocumentTitle>

@@ -116,13 +116,6 @@
   height: 20px;
 }
 
-.iconCamperItemsStroke {
-  width: 20px;
-  height: 20px;
-  stroke: var(--main-color);
-  fill: none;
-}
-
 .showMore {
   border-radius: 200px;
   padding: 16px 40px;

@@ -23,6 +23,7 @@
   width: 982px;
   border-radius: 20px;
   padding: 40px;
+  padding-right: 16px;
   background-color: var(--main-white);
   box-shadow: 0 4px 50px 0 rgba(245, 189, 189, 0.1);
   height: 90%;
@@ -102,10 +103,10 @@
 }
 
 .modalInfo {
-  height: 100%;
+  height: 80%;
   overflow-x: hidden;
   overflow-y: auto;
-  /* overflow: auto; */
+  padding-right: 16px;
 }
 
 .modalInfo::-webkit-scrollbar-button {
@@ -218,9 +219,31 @@
 
 .activeContainer {
   display: flex;
-  gap: 24px;
+  gap: 20px;
 }
+
 .featuresInfo,
 .reviewsInfo {
   width: 430px;
+}
+
+.featuresTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--main-color);
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.featuresTitle::before {
+  content: '';
+  position: absolute;
+  bottom: -24px;
+  right: 0px;
+  transform: translateY(-50%);
+  display: block;
+  width: 430px;
+  height: 1px;
+  background-color: rgba(16, 24, 40, 0.2);
 }

@@ -34,7 +34,6 @@ const CamperCard = camper => {
               &#x2768;{camper.reviews.length} Reviews&#x2769;
             </p>
             <Iconsvg iconName="mapPin" className={css.iconMap} />
-            {/* <p className={css.camperLocation}>{camper.location}</p> */}
             <p>{camper.location}</p>
           </div>
         </div>
@@ -49,10 +48,7 @@ const CamperCard = camper => {
             </span>
           </li>
           <li className={css.camperProsItem}>
-            <Iconsvg
-              iconName="automatic"
-              className={css.iconCamperItemsStroke}
-            />
+            <Iconsvg iconName="automatic" className={css.iconCamperItems} />
             <span>
               {camper.transmission.charAt(0).toUpperCase() +
                 camper.transmission.slice(1)}
@@ -66,16 +62,13 @@ const CamperCard = camper => {
           </li>
           {camper.details.kitchen > 0 && (
             <li className={css.camperProsItem}>
-              <Iconsvg
-                iconName="kitchen"
-                className={css.iconCamperItemsStroke}
-              />
+              <Iconsvg iconName="kitchen" className={css.iconCamperItems} />
               <span>Kitchen</span>
             </li>
           )}
           {camper.details.beds > 0 && (
             <li className={css.camperProsItem}>
-              <Iconsvg iconName="bed" className={css.iconCamperItemsStroke} />
+              <Iconsvg iconName="bed" className={css.iconCamperItems} />
               <span>
                 {camper.details.beds}{' '}
                 {camper.details.beds === 1 ? 'bed' : 'beds'}

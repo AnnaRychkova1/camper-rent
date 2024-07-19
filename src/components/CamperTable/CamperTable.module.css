@@ -1,0 +1,26 @@
+.tableContainer {
+  padding-right: 8px;
+}
+
+.camperTable {
+  width: 430px;
+  height: 214px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+  color: var(--main-color);
+  border-collapse: collapse;
+  padding-right: 24px;
+}
+
+.tableBody {
+  width: 424px;
+}
+
+.tableLeft {
+  text-align: left;
+}
+
+.tableRight {
+  text-align: right;
+}

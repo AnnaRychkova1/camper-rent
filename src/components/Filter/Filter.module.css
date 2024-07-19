@@ -53,9 +53,6 @@
   stroke: var(--main-color);
 }
 
-.filterSection {
-}
-
 .filterEquipment {
   margin-top: 14px;
 }
@@ -110,14 +107,11 @@
 .iconFilter {
   width: 32px;
   height: 32px;
-  fill: var(--main-color);
 }
 
-.iconFilterStr {
-  width: 32px;
-  height: 32px;
-  fill: var(--main-white);
-  stroke: var(--main-color);
+.iconFilterCamper {
+  width: 40px;
+  height: 40px;
 }
 
 .searchButton {
@@ -139,3 +133,50 @@
 .searchButton:hover {
   background-color: var(--accent-second-color);
 }
+
+.error {
+  position: absolute;
+  left: 8px;
+  bottom: -18px;
+  color: var(--accent-color);
+  font-size: 12px;
+}
+
+/* check */
+
+/* .filterItem {
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.filterItem input[type='checkbox'],
+.filterItem input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.filterItem input[type='checkbox']:checked + .iconFilter,
+.filterItem input[type='radio']:checked + .iconFilterCamper {
+  border: 2px solid red;
+}
+
+
+
+.iconFilter,
+.iconFilterCamper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+} */
+
+/* .filterItem input[type='checkbox']:checked + .iconFilter::before,
+.filterItem input[type='radio']:checked + .iconFilterCamper::before {
+  border: 2px solid red;
+} */
