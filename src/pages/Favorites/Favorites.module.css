@@ -1,11 +1,13 @@
 .containerFavorite {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   min-height: 620px;
   height: 100vh;
-  margin: 0 auto;
-  text-align: center;
   padding: 100px 64px;
-  position: relative;
+  margin: 0 auto;
 }
 
 .favoriteTitle {
@@ -47,5 +49,10 @@
 }
 
 .imgFavorite {
-  display: inline;
+  width: 320px;
+  height: 320px;
+  background-image: url('../../assets/camper.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 40%;
 }

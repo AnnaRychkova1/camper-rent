@@ -57,13 +57,7 @@ const Favorites = () => {
               You have no favorites yet. Browse the catalog to find campers you
               love!
             </p>
-            <img
-              className={styles.imgFavorite}
-              src="../../assets/camper.png"
-              alt="Camper"
-              width={320}
-              height={320}
-            />
+            <div className={styles.imgFavorite}></div>
           </>
         )}
       </div>
