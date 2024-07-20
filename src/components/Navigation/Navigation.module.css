@@ -1,25 +1,36 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  border-top: 4px solid var(--main-color);
+  border-bottom: 4px solid var(--main-color);
+  background-color: var(--accent-second-color);
+}
+
 .navigation {
-  /* max-width: 1280px; */
-  /* margin: 0 16px; */
   display: flex;
   align-items: center;
   justify-content: right;
-  padding: 16px;
-  border-top: 4px solid var(--main-color);
-  border-bottom: 4px solid var(--main-color);
-  gap: 16px;
-  background-color: var(--accent-second-color);
-  /* background-color: rgba(216, 67, 67, 0.6); */
+  gap: 24px;
+}
+
+.icinHeader {
+  width: 50px;
+  height: 50px;
 }
 
 .navLink {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.25;
   display: flex;
-  padding: 10px 20px;
+  padding: 12px 20px;
   text-decoration: none;
   color: var(--second-color);
   background-color: var(--accent-color);
   border: 1px solid var(--main-color);
-  border-radius: 8px;
+  border-radius: 200px;
   transition: var(--anim);
 }
 

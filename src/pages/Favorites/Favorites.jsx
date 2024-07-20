@@ -2,8 +2,16 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
 import FavoriteCamper from '../../components/FavoriteCamper/FavoriteCamper';
-import { selectCampers } from '../../redux/selectors';
+import {
+  selectCampers,
+  selectError,
+  selectIsLoading,
+} from '../../redux/selectors';
 import css from '../Catalog/Catalog.module.css';
+import styles from './Favorites.module.css';
+import { Link } from 'react-router-dom';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import Loader from '../../components/Loader/Loader';
 
 const getFavoritesFromLocalStorage = () => {
   return JSON.parse(localStorage.getItem('favorites')) || [];
@@ -11,6 +19,8 @@ const getFavoritesFromLocalStorage = () => {
 
 const Favorites = () => {
   const adverts = useSelector(selectCampers);
+  const isError = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
@@ -24,8 +34,19 @@ const Favorites = () => {
   return (
     <>
       <DocumentTitle>Favorites</DocumentTitle>
-      <div className={css.container}>
-        <h2>Favorites</h2>
+      {isError && <ErrorMessage />}
+      {isLoading && <Loader />}
+      <div className={styles.containerFavorite}>
+        <h2 className={styles.favoriteTitle}>Favorites</h2>
+        {favorites.length > 0 && (
+          <p className={styles.description}>
+            Here you can find all your favorite campers that you have saved.
+            Explore and enjoy your favorite choices!
+          </p>
+        )}
+        <Link to="/catalog" className={styles.backToCatalog}>
+          Back to Catalog
+        </Link>
         <ul className={css.camperList}>
           {favorites.map(camper => (
             <li className={css.camperItem} key={camper._id}>
@@ -33,6 +54,21 @@ const Favorites = () => {
             </li>
           ))}
         </ul>
+        {favorites.length === 0 && (
+          <>
+            <p className={styles.noFavorites}>
+              You have no favorites yet. Browse the catalog to find campers you
+              love!
+            </p>
+            <img
+              className={styles.imgFavorite}
+              src="src/assets/camper.png"
+              alt="Camper"
+              width={320}
+              height={320}
+            />
+          </>
+        )}
       </div>
     </>
   );
