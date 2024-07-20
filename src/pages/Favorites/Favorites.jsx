@@ -59,7 +59,7 @@ const Favorites = () => {
             </p>
             <img
               className={styles.imgFavorite}
-              src="src/assets/camper.png"
+              src="../../assets/camper.png"
               alt="Camper"
               width={320}
               height={320}
