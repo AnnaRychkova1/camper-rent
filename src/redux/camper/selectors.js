@@ -32,4 +32,4 @@ const selectFilteredCampers = createSelector(
   }
 );
 
-export { selectIsLoading, selectError, selectFilteredCampers };
+export { selectIsLoading, selectError, selectFilteredCampers, selectCampers };

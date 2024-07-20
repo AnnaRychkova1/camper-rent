@@ -2,16 +2,13 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
 import FavoriteCamper from '../../components/FavoriteCamper/FavoriteCamper';
-import {
-  selectCampers,
-  selectError,
-  selectIsLoading,
-} from '../../redux/selectors';
+import { selectError, selectIsLoading } from '../../redux/camper/selectors';
 import css from '../Catalog/Catalog.module.css';
 import styles from './Favorites.module.css';
 import { Link } from 'react-router-dom';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Loader from '../../components/Loader/Loader';
+import { selectCampers } from '../../redux/camper/selectors';
 
 const getFavoritesFromLocalStorage = () => {
   return JSON.parse(localStorage.getItem('favorites')) || [];

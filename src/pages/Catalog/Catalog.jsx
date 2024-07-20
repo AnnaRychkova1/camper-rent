@@ -20,11 +20,11 @@ const Catalog = () => {
   const isLoading = useSelector(selectIsLoading);
   const [visibleCards, setVisibleCards] = useState(4);
 
-  // console.log(adverts);
-
   useEffect(() => {
     dispatch(getCampers());
   }, [dispatch]);
+
+  console.log(adverts);
 
   const handleLoadMore = () => {
     setVisibleCards(prevCount => prevCount + 4);
