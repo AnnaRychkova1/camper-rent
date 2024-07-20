@@ -2,21 +2,36 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Iconsvg from '../Icon/Icon';
 import css from './Filter.module.css';
 import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDetails, setForm, setLocation } from '../../redux/filter/slice';
 
 const Filter = () => {
+  const dispatch = useDispatch();
+  const { location, form, details } = useSelector(state => state.filter);
+
   const initialValues = {
-    location: '',
-    equipment: [],
-    vehicleType: '',
+    location: location,
+    form: form,
+    details: {
+      airConditioner: details.airConditioner,
+      automatic: details.automatic,
+      kitchen: details.kitchen,
+      TV: details.TV,
+      shower: details.shower,
+    },
   };
+
   const validationSchema = Yup.object().shape({
     location: Yup.string()
       .min(3, 'Too short city name!')
       .max(58, 'Too long city name!'),
   });
+
   const handleSearch = (values, { resetForm }) => {
+    dispatch(setLocation(values.location));
+    dispatch(setForm(values.form));
+    dispatch(setDetails(values.details));
     resetForm();
-    console.log(values);
   };
 
   return (
@@ -74,21 +89,11 @@ const Filter = () => {
                     <label className={css.filterLabel}>
                       <Field
                         type="checkbox"
-                        name="equipment"
-                        value={item.name}
+                        name={`details.${item.name}`}
+                        checked={values.details[item.name]}
                         className={css.checkbox}
-                        onChange={({ target: { checked, value } }) => {
-                          if (checked) {
-                            setFieldValue('equipment', [
-                              ...values.equipment,
-                              value,
-                            ]);
-                          } else {
-                            setFieldValue(
-                              'equipment',
-                              values.equipment.filter(e => e !== value)
-                            );
-                          }
+                        onChange={({ target: { checked } }) => {
+                          setFieldValue(`details.${item.name}`, checked);
                         }}
                       />
                       <div className={css.filterBoxChosed}>
@@ -121,7 +126,7 @@ const Filter = () => {
                   <label className={css.filterLabel}>
                     <Field
                       type="radio"
-                      name="vehicleType"
+                      name="form"
                       value={item.name}
                       className={css.radio}
                     />

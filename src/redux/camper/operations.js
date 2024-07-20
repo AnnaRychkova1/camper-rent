@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { requestGetCampers } from '../services/camperApi';
+import { requestGetCampers } from '../../services/camperApi';
 
 const getCampers = createAsyncThunk('adverts/get', async (_, thunkAPI) => {
   try {

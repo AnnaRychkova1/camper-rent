@@ -5,20 +5,22 @@ import Filter from '../../components/Filter/Filter';
 import CamperCard from '../../components/CamperCard/CamperCard';
 import Loader from '../../components/Loader/Loader';
 import css from './Catalog.module.css';
-import { getCampers } from '../../redux/operations';
+import { getCampers } from '../../redux/camper/operations';
 import {
-  selectCampers,
+  selectFilteredCampers,
   selectError,
   selectIsLoading,
-} from '../../redux/selectors';
+} from '../../redux/camper/selectors';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 const Catalog = () => {
   const dispatch = useDispatch();
-  const adverts = useSelector(selectCampers);
+  const adverts = useSelector(selectFilteredCampers);
   const isError = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
   const [visibleCards, setVisibleCards] = useState(4);
+
+  // console.log(adverts);
 
   useEffect(() => {
     dispatch(getCampers());
@@ -27,6 +29,7 @@ const Catalog = () => {
   const handleLoadMore = () => {
     setVisibleCards(prevCount => prevCount + 4);
   };
+
   return (
     <>
       <DocumentTitle>Catalog</DocumentTitle>

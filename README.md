@@ -7,10 +7,10 @@ This is an application for a company that provides camper rentals.
 
 The application consists of three main pages:
 
-- `Home Page:` General description of the company's services.
-- `Catalog Page:` Catalog of campers with filtering options by location,
+- `Home Page` General description of the company's services.
+- `Catalog Page` Catalog of campers with filtering options by location,
   equipment, and type.
-- `Favorites Page:` List of user-added favorite ads.
+- `Favorites Page` List of user-added favorite ads.
 
 ## :star:Features
 
