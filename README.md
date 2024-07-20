@@ -1,9 +1,12 @@
-# :iphone:Camper Rent Application
+# :blue_car:Camper Rent Application
 
-## :computer:Overview
 
-This project is an application for a company that provides camper rentals in
-Ukraine.
+
+## :dart:Overview
+
+
+This project is created as part of a technical assignment for a company. <br />
+This is an application for a company that provides camper rentals.
 
 The application consists of three main pages:
 
@@ -12,7 +15,8 @@ The application consists of three main pages:
   equipment, and type.
 - Favorites Page: List of user-added favorite ads.
 
-## :computer:Features
+## :star:Features
+
 
 - Ad Card: Users can add/remove ads to/from favorites and view detailed camper
   information in a modal.
@@ -22,7 +26,10 @@ The application consists of three main pages:
   page refreshes.
 - Filtering: Users can filter campers by location, equipment, and type.
 
+
 ## :computer:Technical Stack:
+<br />
+<br />
 
 **:large_blue_diamond:Front-end**<br />
 
@@ -39,17 +46,19 @@ The application consists of three main pages:
 <a href="https://reactrouter.com" target="_blank" rel="noreferrer"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/reactrouter/reactrouter-original.svg" alt="react-router" width="40" height="40" />
 </a>
 </p>
+<br />
+<br />
 
 **:large_blue_diamond:Back-end**<br />
 
-<a href="https://mockapi.io" target="_blank" rel="noreferrer">MockAPI</a> for
-development
+<a href="https://mockapi.io" target="_blank" rel="noreferrer">MockAPI</a> for development
 
-- Styling: Custom
-  <a href="https://www.w3schools.com/css" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/></a>
-  and
-  <a href="https://github.com/sindresorhus/modern-normalize" target="_blank" rel="noreferrer">modern-normalize</a>
 
+<br />
+<br />
+
+**:large_blue_diamond:Libraries and Tools:**<br />
+  
 - Forms and Validation:
   <a href="https://formik.org" target="_blank" rel="noreferrer">Formik</a> and
   <a href="https://github.com/jquense/yup" target="_blank" rel="noreferrer">Yup</a>
@@ -65,11 +74,18 @@ development
 
 - Loading Spinner:
   <a href="https://mhnpd.github.io/react-loader-spinner/" target="_blank" rel="noreferrer">react-loader-spinner</a>
+  
+- Styling: Custom
+  <a href="https://www.w3schools.com/css" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/></a>
+  and
+  <a href="https://github.com/sindresorhus/modern-normalize" target="_blank" rel="noreferrer">modern-normalize</a>
+<br />
+<br />
 
 **:large_blue_diamond:Utilites**<br />
 
 <a href="https://app.netlify.com" target="_blank" rel="noreferrer">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/netlify/netlify-original.svg" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/netlify/netlify-original.svg" alt="netlify" width="40" height="40" />
 </a>
 <a href="https://www.figma.com/" target="_blank" rel="noreferrer">
 <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/>
