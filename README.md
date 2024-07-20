@@ -151,7 +151,7 @@ development
 <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="40" height="40"/>
 </a>
 
-## :view:Gallery:
+## 🎴Gallery:
 
 ![Home Page](src/assets/readme-gallery/homePage.png)
 ![Favorites Page](src/assets/readme-gallery/favorites.png)
