@@ -55,134 +55,52 @@ const Filter = () => {
             <div className={css.filterEquipment}>
               <h3 className={css.filterTitle}>Vehicle equipment</h3>
               <ul className={css.filterList}>
-                <li className={css.filterItem}>
-                  <label>
-                    <Field
-                      type="checkbox"
-                      name="equipment"
-                      value="airConditioner"
-                      className={css.checkbox}
-                      onChange={({ target: { checked, value } }) => {
-                        if (checked) {
-                          setFieldValue('equipment', [
-                            ...values.equipment,
-                            value,
-                          ]);
-                        } else {
-                          setFieldValue(
-                            'equipment',
-                            values.equipment.filter(e => e !== value)
-                          );
-                        }
-                      }}
-                    />
-                    <Iconsvg
-                      iconName="airContainer"
-                      className={css.iconFilter}
-                    />
-                    <span>AC</span>
-                  </label>
-                </li>
-                <li className={css.filterItem}>
-                  <label>
-                    <Field
-                      type="checkbox"
-                      name="equipment"
-                      value="automatic"
-                      className={css.checkbox}
-                      onChange={({ target: { checked, value } }) => {
-                        if (checked) {
-                          setFieldValue('equipment', [
-                            ...values.equipment,
-                            value,
-                          ]);
-                        } else {
-                          setFieldValue(
-                            'equipment',
-                            values.equipment.filter(e => e !== value)
-                          );
-                        }
-                      }}
-                    />
-                    <Iconsvg iconName="automatic" className={css.iconFilter} />
-                    <span>Automatic</span>
-                  </label>
-                </li>
-                <li className={css.filterItem}>
-                  <label>
-                    <Field
-                      type="checkbox"
-                      name="equipment"
-                      value="kitchen"
-                      className={css.checkbox}
-                      onChange={({ target: { checked, value } }) => {
-                        if (checked) {
-                          setFieldValue('equipment', [
-                            ...values.equipment,
-                            value,
-                          ]);
-                        } else {
-                          setFieldValue(
-                            'equipment',
-                            values.equipment.filter(e => e !== value)
-                          );
-                        }
-                      }}
-                    />
-                    <Iconsvg iconName="kitchen" className={css.iconFilter} />
-                    <span>Kitchen</span>
-                  </label>
-                </li>
-                <li className={css.filterItem}>
-                  <label>
-                    <Field
-                      type="checkbox"
-                      name="equipment"
-                      value="TV"
-                      className={css.checkbox}
-                      onChange={({ target: { checked, value } }) => {
-                        if (checked) {
-                          setFieldValue('equipment', [
-                            ...values.equipment,
-                            value,
-                          ]);
-                        } else {
-                          setFieldValue(
-                            'equipment',
-                            values.equipment.filter(e => e !== value)
-                          );
-                        }
-                      }}
-                    />
-                    <Iconsvg iconName="TV" className={css.iconFilter} />
-                    <span>TV</span>
-                  </label>
-                </li>
-                <li className={css.filterItem}>
-                  <label>
-                    <Field
-                      type="checkbox"
-                      name="equipment"
-                      value="shower"
-                      className={css.checkbox}
-                      onChange={({ target: { checked, value } }) => {
-                        if (checked) {
-                          setFieldValue('equipment', [
-                            ...values.equipment,
-                            value,
-                          ]);
-                        } else {
-                          setFieldValue(
-                            'equipment',
-                            values.equipment.filter(e => e !== value)
-                          );
-                        }
-                      }}
-                    />
-                    <Iconsvg iconName="shower" className={css.iconFilter} />
-                    <span>Shower/WC</span>
-                  </label>
-                </li>
+                {[
+                  {
+                    name: 'airConditioner',
+                    label: 'AC',
+                    iconName: 'airContainer',
+                  },
+                  {
+                    name: 'automatic',
+                    label: 'Automatic',
+                    iconName: 'automatic',
+                  },
+                  { name: 'kitchen', label: 'Kitchen', iconName: 'kitchen' },
+                  { name: 'TV', label: 'TV', iconName: 'TV' },
+                  { name: 'shower', label: 'Shower/WC', iconName: 'shower' },
+                ].map(item => (
+                  <li className={css.filterItem} key={item.name}>
+                    <label className={css.filterLabel}>
+                      <Field
+                        type="checkbox"
+                        name="equipment"
+                        value={item.name}
+                        className={css.checkbox}
+                        onChange={({ target: { checked, value } }) => {
+                          if (checked) {
+                            setFieldValue('equipment', [
+                              ...values.equipment,
+                              value,
+                            ]);
+                          } else {
+                            setFieldValue(
+                              'equipment',
+                              values.equipment.filter(e => e !== value)
+                            );
+                          }
+                        }}
+                      />
+                      <div className={css.filterBoxChosed}>
+                        <Iconsvg
+                          iconName={item.iconName}
+                          className={css.iconFilter}
+                        />
+                        <span>{item.label}</span>
+                      </div>
+                    </label>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -190,51 +108,33 @@ const Filter = () => {
           <div className={css.filterSection}>
             <h3 className={css.filterTitle}>Vehicle type</h3>
             <ul className={css.filterList}>
-              <li className={css.filterItem}>
-                <label>
-                  <Field
-                    type="radio"
-                    name="vehicleType"
-                    value="panelTruck"
-                    className={css.radio}
-                  />
-                  <Iconsvg
-                    iconName="camperSmall"
-                    className={css.iconFilterCamper}
-                  />
-                  <span>Van</span>
-                </label>
-              </li>
-              <li className={css.filterItem}>
-                <label>
-                  <Field
-                    type="radio"
-                    name="vehicleType"
-                    value="fullyIntegrated"
-                    className={css.radio}
-                  />
-                  <Iconsvg
-                    iconName="camperMedium"
-                    className={css.iconFilterCamper}
-                  />
-                  <span>Fully Integrated</span>
-                </label>
-              </li>
-              <li className={css.filterItem}>
-                <label>
-                  <Field
-                    type="radio"
-                    name="vehicleType"
-                    value="alcove"
-                    className={css.radio}
-                  />
-                  <Iconsvg
-                    iconName="camperBig"
-                    className={css.iconFilterCamper}
-                  />
-                  <span>Alcove</span>
-                </label>
-              </li>
+              {[
+                { name: 'panelTruck', label: 'Van', iconName: 'camperSmall' },
+                {
+                  name: 'fullyIntegrated',
+                  label: 'Fully Integrated',
+                  iconName: 'camperMedium',
+                },
+                { name: 'alcove', label: 'Alcove', iconName: 'camperBig' },
+              ].map(item => (
+                <li className={css.filterItem} key={item.name}>
+                  <label className={css.filterLabel}>
+                    <Field
+                      type="radio"
+                      name="vehicleType"
+                      value={item.name}
+                      className={css.radio}
+                    />
+                    <div className={css.filterBoxChosed}>
+                      <Iconsvg
+                        iconName={item.iconName}
+                        className={css.iconFilterCamper}
+                      />
+                      <span>{item.label}</span>
+                    </div>
+                  </label>
+                </li>
+              ))}
             </ul>
           </div>
 
