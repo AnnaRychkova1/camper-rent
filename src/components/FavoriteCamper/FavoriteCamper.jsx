@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
+import css from '../CamperCard/CamperCard.module.css';
 import Iconsvg from '../Icon/Icon';
-import css from './CamperCard.module.css';
 import CamperModal from '../../modal/CamperModal';
 
-const CamperCard = camper => {
+const FavoriteCamper = ({ camper }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -139,4 +139,4 @@ const CamperCard = camper => {
   );
 };
 
-export default CamperCard;
+export default FavoriteCamper;
