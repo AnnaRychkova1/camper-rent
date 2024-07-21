@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
 import css from './Home.module.css';
+import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
 
 const Home = () => {
   return (

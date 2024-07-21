@@ -13,6 +13,14 @@
   align-items: center;
 }
 
+.noCampersFiltered {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--main-color);
+}
+
 .camperList {
   display: flex;
   flex-direction: column;

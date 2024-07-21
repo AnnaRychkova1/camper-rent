@@ -16,7 +16,6 @@ const selectFilteredCampers = createSelector(
       const matchesDetails = Object.keys(filter.details).every(
         detail => !filter.details[detail] || camper.details[detail]
       );
-
       //   console.log(filter.details);
       //   console.log(camper);
       //   console.log(filter.details.automatic);

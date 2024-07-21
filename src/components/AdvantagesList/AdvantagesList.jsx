@@ -1,5 +1,5 @@
-import Iconsvg from '../Icon/Icon';
 import css from './AdvantagesList.module.css';
+import Iconsvg from '../Icon/Icon';
 
 const AdvantagesList = ({ camper }) => {
   const {

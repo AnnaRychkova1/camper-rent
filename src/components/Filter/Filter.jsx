@@ -1,9 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import Iconsvg from '../Icon/Icon';
-import css from './Filter.module.css';
 import * as Yup from 'yup';
+
+import css from './Filter.module.css';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { setDetails, setForm, setLocation } from '../../redux/filter/slice';
+import Iconsvg from '../Icon/Icon';
 
 const Filter = () => {
   const dispatch = useDispatch();

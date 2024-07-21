@@ -1,30 +1,26 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+
+import css from './Catalog.module.css';
+
 import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
 import Filter from '../../components/Filter/Filter';
 import CamperCard from '../../components/CamperCard/CamperCard';
 import Loader from '../../components/Loader/Loader';
-import css from './Catalog.module.css';
-import { getCampers } from '../../redux/camper/operations';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import {
   selectFilteredCampers,
   selectError,
   selectIsLoading,
 } from '../../redux/camper/selectors';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
 const Catalog = () => {
-  const dispatch = useDispatch();
   const adverts = useSelector(selectFilteredCampers);
   const isError = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
   const [visibleCards, setVisibleCards] = useState(4);
 
-  useEffect(() => {
-    dispatch(getCampers());
-  }, [dispatch]);
-
-  console.log(adverts);
+  // console.log(adverts);
 
   const handleLoadMore = () => {
     setVisibleCards(prevCount => prevCount + 4);
@@ -38,6 +34,11 @@ const Catalog = () => {
       <div className={css.container}>
         <Filter />
         <div className={css.campersContainer}>
+          {adverts.length === 0 && (
+            <p className={css.noCampersFiltered}>
+              There is no campers matches your search
+            </p>
+          )}
           <ul className={css.camperList}>
             {adverts.slice(0, visibleCards).map(camper => (
               <li className={css.camperItem} key={camper._id}>

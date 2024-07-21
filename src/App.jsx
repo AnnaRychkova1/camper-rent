@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-// import css from './App.module.css';
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import { Layout } from './Layout';
-// import Modals from './components/CamperModal/Modals';
+import { getCampers } from './redux/camper/operations';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const Catalog = lazy(() => import('./pages/Catalog/Catalog'));
@@ -10,6 +11,12 @@ const Favorites = lazy(() => import('./pages/Favorites/Favorites'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCampers());
+  }, [dispatch]);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

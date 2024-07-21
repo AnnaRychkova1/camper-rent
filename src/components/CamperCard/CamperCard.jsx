@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import Iconsvg from '../Icon/Icon';
+
 import css from './CamperCard.module.css';
+
 import CamperModal from '../../modal/CamperModal';
+import Iconsvg from '../Icon/Icon';
 
 const CamperCard = camper => {
   const [isModalOpen, setIsModalOpen] = useState(false);

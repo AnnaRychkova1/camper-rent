@@ -1,11 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import DatePicker from 'react-datepicker';
+import { useRef } from 'react';
 
 import css from './BookingForm.module.css';
 
 import Iconsvg from '../Icon/Icon';
-import { useRef } from 'react';
 
 const BookingForm = () => {
   const initialValues = {

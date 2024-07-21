@@ -1,5 +1,6 @@
-import Iconsvg from '../Icon/Icon';
 import css from './ReviewsList.module.css';
+import Iconsvg from '../Icon/Icon';
+
 const ReviewsList = ({ reviews }) => {
   return (
     <>

@@ -1,7 +1,9 @@
-import Modal from 'react-modal';
-import css from './CamperModal.module.css';
-import Iconsvg from '../components/Icon/Icon';
 import { useState } from 'react';
+import Modal from 'react-modal';
+
+import css from './CamperModal.module.css';
+
+import Iconsvg from '../components/Icon/Icon';
 import BookingForm from '../components/BookingForm/BookingForm';
 import AdvantagesList from '../components/AdvantagesList/AdvantagesList';
 import CamperTable from '../components/CamperTable/CamperTable';
