@@ -2,6 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import DatePicker from 'react-datepicker';
 import { useRef } from 'react';
+import { toast } from 'react-hot-toast';
 
 import css from './BookingForm.module.css';
 
@@ -29,7 +30,9 @@ const BookingForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     resetForm();
-    console.log(values);
+    toast.success(
+      'Your data was successfully sent. Our manager will contact you within 24 hours.'
+    );
   };
 
   const datePickerRef = useRef(null);

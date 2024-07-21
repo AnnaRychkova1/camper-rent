@@ -19,7 +19,7 @@
   background-color: var(--background-features);
   font-weight: 600;
   font-size: 24px;
-  line-height: 1.25;
+  line-height: 30px;
   color: var(--accent-color);
   display: flex;
   align-items: center;
@@ -29,7 +29,7 @@
 .reviewerName {
   font-weight: 600;
   font-size: 18px;
-  line-height: 1.33;
+  line-height: 24px;
   color: var(--main-color);
   margin-bottom: 4px;
 }
@@ -50,6 +50,6 @@
 
 .reviewerComment {
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 24px;
   color: var(--second-color);
 }

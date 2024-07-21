@@ -20,7 +20,7 @@
   align-items: center;
   font-weight: 600;
   font-size: 24px;
-  line-height: 1.25;
+  line-height: 30px;
   color: var(--main-color);
   margin-bottom: 8px;
 }
@@ -61,7 +61,7 @@
   align-items: center;
   justify-content: left;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 24px;
   color: var(--main-color);
 }
 
@@ -93,7 +93,7 @@
   white-space: nowrap;
   overflow: hidden;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 24px;
   color: var(--second-color);
 }
 
@@ -103,7 +103,7 @@
   flex-wrap: wrap;
   font-weight: 500;
   font-size: 16px;
-  line-height: 1.25;
+  line-height: 20px;
   text-align: center;
   color: var(--main-color);
 }

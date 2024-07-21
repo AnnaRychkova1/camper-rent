@@ -5,7 +5,7 @@ import css from './CamperCard.module.css';
 import CamperModal from '../../modal/CamperModal';
 import Iconsvg from '../Icon/Icon';
 
-const CamperCard = camper => {
+const CamperCard = ({ camper }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -19,7 +19,7 @@ const CamperCard = camper => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const handleAddToFavorite = () => {
+  const handleToggleFavorite = () => {
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     if (favorites.includes(camper._id)) {
       const updatedFavorites = favorites.filter(id => id !== camper._id);
@@ -87,7 +87,7 @@ const CamperCard = camper => {
               <span>&#8364;{camper.price}.00 </span>
               <button
                 type="button"
-                onClick={handleAddToFavorite}
+                onClick={handleToggleFavorite}
                 className={css.addToFavorite}
               >
                 <Iconsvg

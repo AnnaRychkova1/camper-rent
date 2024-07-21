@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 import Loader from './components/Loader/Loader';
 import { Navigation } from './components/Navigation/Navigation';
@@ -13,18 +14,29 @@ export const Layout = () => {
           <Outlet />
         </main>
       </Suspense>
-
-      {/* <Toaster
+      <Toaster
         position="top-center"
         reverseOrder={false}
         toastOptions={{
-          style: {
-            background: '#f9e3cc',
-            color: '#f57a38',
-            marginTop: '25px',
+          success: {
+            duration: 3000,
+            style: {
+              background: '#28a745',
+              color: '#fff',
+            },
+          },
+          error: {
+            duration: 3000,
+            style: {
+              background: '#e44848',
+              color: '#fff',
+            },
           },
         }}
-      /> */}
+        containerStyle={{
+          top: 124,
+        }}
+      />
     </>
   );
 };

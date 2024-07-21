@@ -13,13 +13,14 @@
 .favoriteTitle {
   font-weight: 700;
   font-size: 36px;
-  line-height: 1.25;
+  line-height: 45px;
   color: var(--main-color);
   margin-bottom: 24px;
 }
 
 .description {
   font-size: 18px;
+  line-height: 24px;
   margin-bottom: 18px;
   color: var(--second-color);
 }

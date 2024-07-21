@@ -62,7 +62,7 @@
   overflow: hidden;
   font-weight: 600;
   font-size: 24px;
-  line-height: 1.25;
+  line-height: 30px;
   color: var(--main-color);
   margin-bottom: 10px;
 }
@@ -98,7 +98,7 @@
 .modalPrice {
   font-weight: 600;
   font-size: 24px;
-  line-height: 1.25;
+  line-height: 30px;
   color: var(--main-color);
 }
 
@@ -155,7 +155,7 @@
 .modalDescription {
   margin-bottom: 34px;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 24px;
   color: var(--second-color);
 }
 
@@ -184,7 +184,7 @@
   padding: 10px 0px;
   font-weight: 600;
   font-size: 20px;
-  line-height: 1.2;
+  line-height: 24px;
   color: var(--main-color);
   transition: var(--anim);
 }
@@ -195,7 +195,7 @@
   padding: 10px 0px;
   font-weight: 600;
   font-size: 20px;
-  line-height: 1.2;
+  line-height: 24px;
   color: var(--main-color);
   transition: var(--anim);
   position: relative;
@@ -230,7 +230,7 @@
 .featuresTitle {
   font-weight: 600;
   font-size: 20px;
-  line-height: 1.2;
+  line-height: 24px;
   color: var(--main-color);
   margin-bottom: 48px;
   position: relative;

@@ -1,10 +1,16 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { useEffect } from 'react';
 
 import css from './Filter.module.css';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setDetails, setForm, setLocation } from '../../redux/filter/slice';
+import {
+  clearFilters,
+  setDetails,
+  setForm,
+  setLocation,
+} from '../../redux/filter/slice';
 import Iconsvg from '../Icon/Icon';
 
 const Filter = () => {
@@ -35,6 +41,12 @@ const Filter = () => {
     dispatch(setDetails(values.details));
     resetForm();
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearFilters());
+    };
+  }, [dispatch]);
 
   return (
     <Formik

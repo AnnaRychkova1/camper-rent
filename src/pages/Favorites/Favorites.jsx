@@ -6,7 +6,8 @@ import styles from './Favorites.module.css';
 import css from '../Catalog/Catalog.module.css';
 
 import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
-import FavoriteCamper from '../../components/FavoriteCamper/FavoriteCamper';
+// import FavoriteCamper from '../../components/FavoriteCamper/FavoriteCamper';
+import CamperCard from '../../components/CamperCard/CamperCard';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Loader from '../../components/Loader/Loader';
 import { selectError, selectIsLoading } from '../../redux/camper/selectors';
@@ -49,7 +50,8 @@ const Favorites = () => {
         <ul className={css.camperList}>
           {favorites.map(camper => (
             <li className={css.camperItem} key={camper._id}>
-              <FavoriteCamper camper={camper} />
+              {/* <FavoriteCamper camper={camper} /> */}
+              <CamperCard camper={camper} />
             </li>
           ))}
         </ul>

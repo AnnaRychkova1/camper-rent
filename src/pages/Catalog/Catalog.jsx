@@ -20,8 +20,6 @@ const Catalog = () => {
   const isLoading = useSelector(selectIsLoading);
   const [visibleCards, setVisibleCards] = useState(4);
 
-  // console.log(adverts);
-
   const handleLoadMore = () => {
     setVisibleCards(prevCount => prevCount + 4);
   };
@@ -42,7 +40,7 @@ const Catalog = () => {
           <ul className={css.camperList}>
             {adverts.slice(0, visibleCards).map(camper => (
               <li className={css.camperItem} key={camper._id}>
-                <CamperCard {...camper} />
+                <CamperCard camper={camper} />
               </li>
             ))}
           </ul>
