@@ -12,16 +12,16 @@ const selectFilteredCampers = createSelector(
       const matchesLocation = filter.location
         ? camper.location.toLowerCase().includes(filter.location.toLowerCase())
         : true;
+
       const matchesForm = filter.form ? camper.form === filter.form : true;
-      const matchesDetails = Object.keys(filter.details).every(
-        detail => !filter.details[detail] || camper.details[detail]
-      );
-      //   console.log(filter.details);
-      //   console.log(camper);
-      //   console.log(filter.details.automatic);
-      //   console.log(camper.transmission);
+
+      const matchesDetails = Object.keys(filter.details).every(detail => {
+        if (detail === 'automatic') return true;
+        return !filter.details[detail] || camper.details[detail];
+      });
+
       const matchesTransmission = filter.details.automatic
-        ? camper.transmission === 'automatic'
+        ? camper.transmission.toLowerCase() === 'automatic'
         : true;
 
       return (
