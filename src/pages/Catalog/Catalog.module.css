@@ -1,13 +1,20 @@
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 64px;
+  align-items: center;
+  gap: 24px;
+  min-width: 320px;
+  width: 375px;
   width: 100%;
-  padding: 100px 64px;
+  padding: 25px 16px;
+  margin: auto;
 }
 
 .campersContainer {
-  width: 888px;
+  min-width: 288px;
+  max-width: 375px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,12 +38,14 @@
 
 .camperItem {
   display: flex;
+  flex-direction: column;
   gap: 24px;
   border: 1px solid rgba(16, 24, 40, 0.2);
   border-radius: 20px;
-  padding: 24px;
-  width: 888px;
-  height: 358px;
+  padding: 12px;
+  min-width: 288px;
+  max-width: 375px;
+  width: 100%;
 }
 
 .loadMore {
@@ -57,4 +66,44 @@
 
 .loadMore:hover {
   border-color: var(--accent-color);
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    max-width: 100%;
+    padding: 50px 32px;
+    gap: 32px;
+  }
+
+  .campersContainer {
+    width: 704px;
+    max-width: 100%;
+  }
+
+  .camperItem {
+    padding: 24px;
+    width: 704px;
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .container {
+    width: 1440px;
+    gap: 64px;
+    padding: 100px 64px;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .campersContainer {
+    width: 888px;
+  }
+
+  .camperItem {
+    flex-direction: row;
+    width: 888px;
+    height: 358px;
+  }
 }

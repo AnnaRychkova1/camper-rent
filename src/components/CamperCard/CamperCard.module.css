@@ -1,6 +1,4 @@
 .camperImage {
-  width: 290px;
-  height: 310px;
   object-fit: cover;
   overflow: hidden;
   border-radius: 10px;
@@ -10,16 +8,18 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  width: 526px;
-  height: 310px;
+  min-width: 288px;
+  max-width: 337px;
+  width: 100%;
 }
 
 .camperTitle {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  gap: 12px;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 30px;
   color: var(--main-color);
   margin-bottom: 8px;
@@ -88,7 +88,7 @@
 }
 
 .camperDescr {
-  width: 525px;
+  width: 288px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -106,6 +106,8 @@
   line-height: 20px;
   text-align: center;
   color: var(--main-color);
+  height: 98px;
+  overflow-y: hidden;
 }
 
 .camperProsItem {
@@ -136,4 +138,57 @@
 
 .showMore:hover {
   background-color: var(--accent-second-color);
+}
+
+@media only screen and (min-width: 375px) {
+  .camperDescr {
+    width: 327px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .camperPros {
+    height: 48px;
+    overflow-y: hidden;
+  }
+
+  .camperDescr {
+    width: 656px;
+  }
+
+  .camperTitle {
+    flex-direction: row;
+    font-size: 24px;
+  }
+
+  .camperInfo {
+    width: 656px;
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .camperImage {
+    width: 290px;
+    height: 310px;
+  }
+
+  .camperInfo {
+    width: 526px;
+    height: 310px;
+  }
+
+  .camperTitle {
+    font-size: 24px;
+    width: 100%;
+  }
+
+  .camperDescr {
+    width: 525px;
+  }
+
+  .camperPros {
+    height: fit-content;
+    overflow-y: visible;
+  }
 }

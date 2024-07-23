@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <section>
       <DocumentTitle>CampersRent</DocumentTitle>
-      <div className={css.container}>
+      <div className={css.containerHero}>
         <h1 className={css.title}>Welcome to CamperRent</h1>
         <h2 className={css.subtitle}>
           Book a camper today and start your adventure!

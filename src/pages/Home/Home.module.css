@@ -1,17 +1,16 @@
-.container {
+.containerHero {
   display: flex;
   flex-direction: column;
-  padding: 100px 64px;
+  padding: 50px 32px;
+  min-width: 320px;
+  width: 375px;
   width: 100%;
-  min-height: 620px;
   height: 100vh;
   text-align: center;
   align-items: center;
   gap: 20px;
-  width: 100%;
   background-color: rgba(228, 72, 72, 0.2);
   background-image: url('../../assets/nature.jpg');
-  background-size: 1280px 732px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 40% 90%;
@@ -32,7 +31,7 @@
 
 .bookLink {
   border: 2px solid var(--accent-color);
-  padding: 16px 32px;
+  padding: 12px 18px;
   border-radius: 200px;
   font-weight: 700;
   font-size: 36px;
@@ -43,4 +42,16 @@
 .bookLink:hover {
   color: var(--main-color);
   background-color: var(--accent-color);
+}
+
+@media screen and (min-width: 768px) {
+  .containerHero {
+    width: 100%;
+    padding: 100px 64px;
+    background-size: cover;
+  }
+
+  .bookLink {
+    padding: 12px 32px;
+  }
 }

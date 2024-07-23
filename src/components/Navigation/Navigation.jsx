@@ -13,7 +13,7 @@ const getNavLinkClassNames = ({ isActive }) =>
 export const Navigation = () => {
   return (
     <header className={css.header}>
-      <Iconsvg iconName="camperBig" className={css.icinHeader} />
+      <Iconsvg iconName="camperBig" className={css.iconHeader} />
       <nav className={css.navigation}>
         <NavLink className={getNavLinkClassNames} to="/">
           Home
