@@ -2,8 +2,6 @@
   border: 1px solid rgba(16, 24, 40, 0.2);
   border-radius: 10px;
   padding: 24px;
-
-  width: 448px;
   height: fit-content;
 }
 
@@ -29,6 +27,14 @@
   margin-bottom: 24px;
 }
 
+.datePickerGroup {
+  position: relative;
+}
+
+.datePicker {
+  padding-right: 40px;
+}
+
 .formGroup {
   display: flex;
   align-items: center;
@@ -39,7 +45,9 @@
 
 .field {
   border-radius: 10px;
-  width: 400px;
+  min-width: 238px;
+  max-width: 304px;
+  width: 100%;
   height: 56px;
   border: none;
   padding: 12px 18px;
@@ -48,6 +56,19 @@
   transition: var(--anim);
   display: flex;
   justify-content: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .field {
+    width: 574px;
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .field {
+    width: 400px;
+  }
 }
 
 .field::placeholder {
@@ -60,14 +81,6 @@
 .field:focus {
   outline: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.datePickerGroup {
-  position: relative;
-}
-
-.datePicker {
-  padding-right: 40px;
 }
 
 .buttonCalendar {
@@ -99,6 +112,7 @@
 
 .fieldComment {
   height: 114px;
+  resize: none;
 }
 
 .error {

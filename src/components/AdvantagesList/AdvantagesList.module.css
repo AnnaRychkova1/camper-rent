@@ -4,7 +4,22 @@
   gap: 8px;
   align-items: center;
   margin-bottom: 44px;
-  width: 430px;
+  min-width: 238px;
+  max-width: 304px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .advantagesList {
+    width: 624px;
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .advantagesList {
+    width: 430px;
+  }
 }
 
 .advantagesItem {

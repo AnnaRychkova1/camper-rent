@@ -38,7 +38,7 @@ const CamperModal = ({ isOpen, closeModal, camper }) => {
           <Iconsvg iconName="mapPin" className={css.iconMap} />
           <p>{camper.location}</p>
         </div>
-        <p className={css.modalPrice}>&#8364;{camper.price}.00</p>
+        <p className={css.modalPrice}>&#8364;{camper.price.toFixed(2)}</p>
       </div>
 
       <div className={css.modalInfo}>

@@ -36,7 +36,7 @@ const CamperTable = ({ camper }) => {
   return (
     <div className={css.tableContainer}>
       <table className={css.camperTable}>
-        <tbody className={css.tableBody}>
+        <tbody>
           {[
             {
               label: 'Form',

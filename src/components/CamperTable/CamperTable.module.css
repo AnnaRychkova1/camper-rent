@@ -3,7 +3,9 @@
 }
 
 .camperTable {
-  width: 430px;
+  min-width: 238px;
+  max-width: 304px;
+  width: 100%;
   height: 214px;
   font-weight: 500;
   font-size: 18px;
@@ -13,8 +15,17 @@
   padding-right: 24px;
 }
 
-.tableBody {
-  width: 424px;
+@media only screen and (min-width: 768px) {
+  .camperTable {
+    width: 624px;
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .camperTable {
+    width: 430px;
+  }
 }
 
 .tableLeft {
