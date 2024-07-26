@@ -30,7 +30,7 @@ const Catalog = () => {
       {isError && <ErrorMessage />}
       {isLoading && <Loader />}
       <div className={css.container}>
-        <Filter />
+        <Filter adverts={adverts} />
         <div className={css.campersContainer}>
           {adverts.length === 0 && (
             <p className={css.noCampersFiltered}>

@@ -1,21 +1,65 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import css from './Filter.module.css';
 
+import Iconsvg from '../Icon/Icon';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectCampers } from '../../redux/camper/selectors';
 import {
   clearFilters,
   setDetails,
   setForm,
   setLocation,
 } from '../../redux/filter/slice';
-import Iconsvg from '../Icon/Icon';
 
 const Filter = () => {
   const dispatch = useDispatch();
   const { location, form, details } = useSelector(state => state.filter);
+  const [cities, setCities] = useState([]);
+  const [filteredCities, setFilteredCities] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const adverts = useSelector(selectCampers);
+
+  useEffect(() => {
+    const uniqueCities = [
+      ...new Set(
+        adverts.map(advert => {
+          const [country, city] = advert.location.split(', ');
+          return `${city} (${country})`;
+        })
+      ),
+    ];
+    setCities(uniqueCities);
+    setFilteredCities(uniqueCities);
+  }, [adverts]);
+
+  const handleCitySelect = (city, setFieldValue) => {
+    setFieldValue('location', city);
+    setShowDropdown(false);
+  };
+
+  const filterCities = inputValue => {
+    const filtered = cities.filter(city =>
+      city.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    setFilteredCities(filtered);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const initialValues = {
     location: location,
@@ -36,10 +80,15 @@ const Filter = () => {
   });
 
   const handleSearch = (values, { resetForm }) => {
-    dispatch(setLocation(values.location));
+    if (values.location === 'All Cities' || values.location === '') {
+      dispatch(setLocation(''));
+    } else {
+      dispatch(setLocation(values.location));
+    }
     dispatch(setForm(values.form));
     dispatch(setDetails(values.details));
     resetForm();
+    setShowDropdown(false);
   };
 
   useEffect(() => {
@@ -60,20 +109,50 @@ const Filter = () => {
             <label htmlFor="location" className={css.label}>
               Location
             </label>
-            <div className={css.inputWrapper}>
+            <div className={css.inputWrapper} ref={dropdownRef}>
               <Iconsvg iconName="mapPin" className={css.iconMap} />
               <Field
                 type="text"
-                id="location"
                 name="location"
                 className={css.locationInput}
                 placeholder="City"
+                value={values.location}
+                onClick={() => {
+                  setShowDropdown(!showDropdown);
+                  setFilteredCities(cities);
+                }}
+                onChange={e => {
+                  setFieldValue('location', e.target.value);
+                  filterCities(e.target.value);
+                  setShowDropdown(true);
+                }}
               />
               <ErrorMessage
                 className={css.error}
                 name="location"
                 component="span"
               />
+              {showDropdown && (
+                <ul className={css.dropdownList}>
+                  <li
+                    className={css.dropdownItem}
+                    onClick={() =>
+                      handleCitySelect('All Cities', setFieldValue)
+                    }
+                  >
+                    All Cities
+                  </li>
+                  {filteredCities.map(city => (
+                    <li
+                      className={css.dropdownItem}
+                      key={city}
+                      onClick={() => handleCitySelect(city, setFieldValue)}
+                    >
+                      {city}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
 

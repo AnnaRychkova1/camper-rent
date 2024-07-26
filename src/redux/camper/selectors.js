@@ -9,8 +9,13 @@ const selectFilteredCampers = createSelector(
   [selectCampers, selectFilter],
   (campers, filter) => {
     return campers.filter(camper => {
+      const [country, city] = camper.location.split(', ');
+      const formattedLocation = `${city} (${country})`;
+
       const matchesLocation = filter.location
-        ? camper.location.toLowerCase().includes(filter.location.toLowerCase())
+        ? formattedLocation
+            .toLowerCase()
+            .includes(filter.location.toLowerCase())
         : true;
 
       const matchesForm = filter.form ? camper.form === filter.form : true;

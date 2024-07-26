@@ -27,10 +27,6 @@
   margin-bottom: 24px;
 }
 
-.datePickerGroup {
-  position: relative;
-}
-
 .datePicker {
   padding-right: 40px;
 }
@@ -38,7 +34,6 @@
 .formGroup {
   display: flex;
   align-items: center;
-  justify-content: center;
   padding-bottom: 12px;
   position: relative;
 }

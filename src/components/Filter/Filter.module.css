@@ -34,11 +34,42 @@
   height: 56px;
   background-color: var(--background-inputs);
   border: none;
+  cursor: none;
+  position: relative;
 }
 
 .locationInput:focus,
 .locationInput:hover {
   outline: transparent;
+}
+
+.dropdownList {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 12px;
+  min-width: 288px;
+  max-width: 375px;
+  width: 100%;
+  background-color: var(--background-inputs);
+  border-radius: 10px;
+}
+
+.dropdownItem {
+  cursor: pointer;
+  color: rgba(16, 24, 40, 0.5);
+  padding: 8px 8px 8px 48px;
+  border: 1px solid var(--main-white);
+  border-radius: 15px;
+  transition: var(--anim);
+}
+
+.dropdownItem:hover,
+.dropdownItem:focus {
+  color: var(--main-color);
 }
 
 .iconMap {
@@ -50,6 +81,7 @@
   top: 18px;
   left: 18px;
   transition: var(--anim);
+  z-index: 5;
 }
 
 .inputWrapper:focus-within .iconMap,
