@@ -22,17 +22,15 @@ const CamperImage = ({ images, imageIndex }) => {
 
   return (
     <div className={css.modalBody}>
+      <button className={css.back} onClick={showPrevImage}>
+        <Iconsvg iconName="arrowLeft" className={css.arrow} />
+      </button>
       {Array.isArray(images) && images.length > 0 && (
-        <div className={css.imageModal}>
-          <button className={css.back} onClick={showPrevImage}>
-            <Iconsvg iconName="arrowLeft" className={css.arrow} />
-          </button>
-          <img className={css.image} src={images[currentImage]}></img>
-          <button className={css.next} onClick={showNextImage}>
-            <Iconsvg iconName="arrowRight" className={css.arrow} />
-          </button>
-        </div>
+        <img className={css.image} src={images[currentImage]}></img>
       )}
+      <button className={css.next} onClick={showNextImage}>
+        <Iconsvg iconName="arrowRight" className={css.arrow} />
+      </button>
     </div>
   );
 };
