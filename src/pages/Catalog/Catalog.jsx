@@ -3,11 +3,13 @@ import { useState } from 'react';
 
 import css from './Catalog.module.css';
 
+import ModalWindow from '../../modal/ModalWindow';
 import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
 import Filter from '../../components/Filter/Filter';
 import CamperCard from '../../components/CamperCard/CamperCard';
 import Loader from '../../components/Loader/Loader';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import CamperModal from '../../components/CamperModal/CamperModal';
 import {
   selectFilteredCampers,
   selectError,
@@ -19,10 +21,22 @@ const Catalog = () => {
   const isError = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
   const [visibleCards, setVisibleCards] = useState(4);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalData, setModalData] = useState({});
 
   const handleLoadMore = () => {
     setVisibleCards(prevCount => prevCount + 4);
   };
+
+  const handleOpenModal = _id => {
+    setIsModalOpen(true);
+    setModalData(adverts.filter(camper => camper._id === _id)[0]);
+    openModal();
+  };
+
+  const openModal = () => setIsModalOpen(true);
+
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <>
@@ -40,7 +54,7 @@ const Catalog = () => {
           <ul className={css.camperList}>
             {adverts.slice(0, visibleCards).map(camper => (
               <li className={css.camperItem} key={camper._id}>
-                <CamperCard camper={camper} />
+                <CamperCard camper={camper} handleOpenModal={handleOpenModal} />
               </li>
             ))}
           </ul>
@@ -51,6 +65,9 @@ const Catalog = () => {
           )}
         </div>
       </div>
+      <ModalWindow isOpen={isModalOpen} closeModal={closeModal}>
+        <CamperModal camper={modalData} />
+      </ModalWindow>
     </>
   );
 };

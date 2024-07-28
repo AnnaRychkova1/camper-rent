@@ -1,32 +1,34 @@
 import { useState } from 'react';
-import Modal from 'react-modal';
 
 import css from './CamperModal.module.css';
 
-import Iconsvg from '../components/Icon/Icon';
-import BookingForm from '../components/BookingForm/BookingForm';
-import AdvantagesList from '../components/AdvantagesList/AdvantagesList';
-import CamperTable from '../components/CamperTable/CamperTable';
-import ReviewsList from '../components/ReviewsList/ReviewsList';
+import ModalWindow from '../../modal/ModalWindow';
+import Iconsvg from '../Icon/Icon';
+import BookingForm from '../BookingForm/BookingForm';
+import AdvantagesList from '../AdvantagesList/AdvantagesList';
+import CamperTable from '../CamperTable/CamperTable';
+import ReviewsList from '../ReviewsList/ReviewsList';
+import CamperImage from '../CamperImage/CamperImage';
 
-Modal.setAppElement('#root');
-
-const CamperModal = ({ isOpen, closeModal, camper }) => {
+const CamperModal = ({ camper }) => {
   const [activeTab, setActiveTab] = useState('Features');
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const openModal = idx => {
+    setImageIndex(idx);
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   const handleTabChange = tabName => {
     setActiveTab(tabName);
   };
+
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={closeModal}
-      className={css.modalContent}
-      overlayClassName={css.modalBackdrop}
-      shouldCloseOnOverlayClick={true}
-    >
-      <button className={css.modalCloseButton} onClick={closeModal}>
-        <Iconsvg iconName="close" className={css.iconClose} />
-      </button>
+    <div className={css.modalBody}>
       <div className={css.modalMainInfo}>
         <h2 className={css.modalTitle}>{camper.name}</h2>
         <div className={css.modalMainDescr}>
@@ -43,27 +45,16 @@ const CamperModal = ({ isOpen, closeModal, camper }) => {
 
       <div className={css.modalInfo}>
         <ul className={css.imgContainer}>
-          <li>
-            <img
-              className={css.camperImg}
-              src={camper.gallery[0]}
-              alt={camper.name}
-            />
-          </li>
-          <li>
-            <img
-              className={css.camperImg}
-              src={camper.gallery[1]}
-              alt={camper.name}
-            />
-          </li>
-          <li>
-            <img
-              className={css.camperImg}
-              src={camper.gallery[2]}
-              alt={camper.name}
-            />
-          </li>
+          {camper.gallery.map((image, idx) => (
+            <li key={idx}>
+              <img
+                src={image}
+                alt={camper.name}
+                className={css.camperImg}
+                onClick={() => openModal(idx)}
+              />
+            </li>
+          ))}
         </ul>
         <div className={css.modalDescription}>{camper.description}</div>
         <div className={css.buttonWrapper}>
@@ -107,7 +98,10 @@ const CamperModal = ({ isOpen, closeModal, camper }) => {
           <BookingForm />
         </div>
       </div>
-    </Modal>
+      <ModalWindow isOpen={modalIsOpen} closeModal={closeModal}>
+        <CamperImage images={camper.gallery} imageIndex={imageIndex} />
+      </ModalWindow>
+    </div>
   );
 };
 

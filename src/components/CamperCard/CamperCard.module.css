@@ -37,7 +37,8 @@
   transition: var(--anim);
 }
 
-.addToFavorite:hover .iconHeart {
+.addToFavorite:hover .iconHeart,
+.addToFavorite:focus-visible .iconHeart {
   fill: var(--accent-color);
   stroke: var(--accent-color);
 }

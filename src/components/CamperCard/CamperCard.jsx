@@ -1,12 +1,8 @@
 import { useEffect, useState } from 'react';
-
 import css from './CamperCard.module.css';
-
-import CamperModal from '../../modal/CamperModal';
 import Iconsvg from '../Icon/Icon';
 
-const CamperCard = ({ camper }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const CamperCard = ({ camper, handleOpenModal }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
@@ -15,9 +11,6 @@ const CamperCard = ({ camper }) => {
       setIsFavorite(true);
     }
   }, [camper._id]);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
 
   const handleToggleFavorite = () => {
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -128,15 +121,13 @@ const CamperCard = ({ camper }) => {
           )}
         </ul>
 
-        <button className={css.showMore} onClick={openModal}>
+        <button
+          className={css.showMore}
+          onClick={() => handleOpenModal(camper._id)}
+        >
           Show more
         </button>
       </div>
-      <CamperModal
-        isOpen={isModalOpen}
-        closeModal={closeModal}
-        camper={camper}
-      />
     </>
   );
 };
