@@ -6,28 +6,26 @@ import css from './Filter.module.css';
 
 import Iconsvg from '../Icon/Icon';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCampers } from '../../redux/camper/selectors';
 import {
   clearFilters,
   setDetails,
   setForm,
   setLocation,
 } from '../../redux/filter/slice';
+import { selectFilter } from '../../redux/filter/selectors';
 
-const Filter = () => {
+const Filter = ({ allAdverts }) => {
   const dispatch = useDispatch();
-  const { location, form, details } = useSelector(state => state.filter);
+  const { location, form, details } = useSelector(selectFilter);
   const [cities, setCities] = useState([]);
   const [filteredCities, setFilteredCities] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
-  const adverts = useSelector(selectCampers);
-
   useEffect(() => {
     const uniqueCities = [
       ...new Set(
-        adverts.map(advert => {
+        allAdverts.map(advert => {
           const [country, city] = advert.location.split(', ');
           return `${city} (${country})`;
         })
@@ -35,7 +33,7 @@ const Filter = () => {
     ];
     setCities(uniqueCities);
     setFilteredCities(uniqueCities);
-  }, [adverts]);
+  }, [allAdverts]);
 
   const handleCitySelect = (city, setFieldValue) => {
     setFieldValue('location', city);

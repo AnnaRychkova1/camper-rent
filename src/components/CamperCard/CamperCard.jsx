@@ -1,28 +1,28 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, removeFavorite } from '../../redux/favorite/slice';
+import { selectFavorite } from '../../redux/favorite/selectors';
 import css from './CamperCard.module.css';
 import Iconsvg from '../Icon/Icon';
 
 const CamperCard = ({ camper, handleOpenModal }) => {
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorite);
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    if (favorites.includes(camper._id)) {
+    if (favorites.some(fav => fav._id === camper._id)) {
       setIsFavorite(true);
     }
-  }, [camper._id]);
+  }, [favorites, camper._id]);
 
   const handleToggleFavorite = () => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    if (favorites.includes(camper._id)) {
-      const updatedFavorites = favorites.filter(id => id !== camper._id);
-      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-      setIsFavorite(false);
+    if (isFavorite) {
+      dispatch(removeFavorite(camper._id));
     } else {
-      favorites.push(camper._id);
-      localStorage.setItem('favorites', JSON.stringify(favorites));
-      setIsFavorite(true);
+      dispatch(addFavorite(camper));
     }
+    setIsFavorite(!isFavorite);
   };
 
   const { adults, transmission, engine, details } = camper;

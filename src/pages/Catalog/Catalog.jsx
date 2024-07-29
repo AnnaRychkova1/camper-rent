@@ -1,5 +1,5 @@
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 import css from './Catalog.module.css';
 
@@ -14,15 +14,24 @@ import {
   selectFilteredCampers,
   selectError,
   selectIsLoading,
+  selectCampers,
 } from '../../redux/camper/selectors';
+import { getCampers } from '../../redux/camper/operations';
 
 const Catalog = () => {
+  const allAdverts = useSelector(selectCampers);
   const adverts = useSelector(selectFilteredCampers);
   const isError = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
   const [visibleCards, setVisibleCards] = useState(4);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState({});
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCampers());
+  }, [dispatch]);
 
   const handleLoadMore = () => {
     setVisibleCards(prevCount => prevCount + 4);
@@ -38,13 +47,15 @@ const Catalog = () => {
 
   const closeModal = () => setIsModalOpen(false);
 
+  console.log(adverts);
+
   return (
     <>
       <DocumentTitle>Catalog</DocumentTitle>
       {isError && <ErrorMessage />}
       {isLoading && <Loader />}
       <div className={css.container}>
-        <Filter adverts={adverts} />
+        <Filter allAdverts={allAdverts} />
         <div className={css.campersContainer}>
           {adverts.length === 0 && (
             <p className={css.noCampersFiltered}>

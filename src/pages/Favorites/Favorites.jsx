@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -6,30 +5,18 @@ import styles from './Favorites.module.css';
 import css from '../Catalog/Catalog.module.css';
 
 import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
-// import FavoriteCamper from '../../components/FavoriteCamper/FavoriteCamper';
 import CamperCard from '../../components/CamperCard/CamperCard';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Loader from '../../components/Loader/Loader';
 import { selectError, selectIsLoading } from '../../redux/camper/selectors';
-import { selectCampers } from '../../redux/camper/selectors';
-
-const getFavoritesFromLocalStorage = () => {
-  return JSON.parse(localStorage.getItem('favorites')) || [];
-};
+import { selectFavorite } from '../../redux/favorite/selectors';
 
 const Favorites = () => {
-  const adverts = useSelector(selectCampers);
+  const favorites = useSelector(selectFavorite);
   const isError = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
-  const [favorites, setFavorites] = useState([]);
 
-  useEffect(() => {
-    const favoriteIds = getFavoritesFromLocalStorage();
-    const favoriteCampers = adverts.filter(camper =>
-      favoriteIds.includes(camper._id)
-    );
-    setFavorites(favoriteCampers);
-  }, [adverts]);
+  console.log(favorites);
 
   return (
     <>
@@ -50,7 +37,6 @@ const Favorites = () => {
         <ul className={css.camperList}>
           {favorites.map(camper => (
             <li className={css.camperItem} key={camper._id}>
-              {/* <FavoriteCamper camper={camper} /> */}
               <CamperCard camper={camper} />
             </li>
           ))}
