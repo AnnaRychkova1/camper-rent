@@ -9,6 +9,7 @@ import './index.css';
 import 'modern-normalize';
 import App from './App.jsx';
 import { store, persistor } from './redux/store.js';
+import { ModalProvider } from '../src/context/ModalContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <PersistGate persistor={persistor} loading={null}>
         <BrowserRouter>
           <HelmetProvider>
-            <App />
+            <ModalProvider>
+              <App />
+            </ModalProvider>
           </HelmetProvider>
         </BrowserRouter>
       </PersistGate>

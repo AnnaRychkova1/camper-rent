@@ -1,14 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite, removeFavorite } from '../../redux/favorite/slice';
-import { selectFavorite } from '../../redux/favorite/selectors';
-import css from './CamperCard.module.css';
-import Iconsvg from '../Icon/Icon';
 
-const CamperCard = ({ camper, handleOpenModal }) => {
+import css from './CamperCard.module.css';
+
+import Iconsvg from '../Icon/Icon';
+import CamperModal from '../ModalCamper/ModalCamper';
+import { addFavorite, removeFavorite } from '../../redux/favorite/slice';
+import { selectFavorites } from '../../redux/favorite/selectors';
+import generateCamperPros from '../../utils/camperPros';
+import { useModalContext } from '../../context/useModalContext';
+
+const CamperCard = ({ camper }) => {
   const dispatch = useDispatch();
-  const favorites = useSelector(selectFavorite);
+  const favorites = useSelector(selectFavorites);
   const [isFavorite, setIsFavorite] = useState(false);
+  const { openModal } = useModalContext();
 
   useEffect(() => {
     if (favorites.some(fav => fav._id === camper._id)) {
@@ -25,45 +31,7 @@ const CamperCard = ({ camper, handleOpenModal }) => {
     setIsFavorite(!isFavorite);
   };
 
-  const { adults, transmission, engine, details } = camper;
-
-  const camperPros = [
-    {
-      label: adults === 1 ? 'adult' : 'adults',
-      value: adults,
-      iconName: 'people',
-    },
-    {
-      label: '',
-      value: transmission.charAt(0).toUpperCase() + transmission.slice(1),
-      iconName: 'automatic',
-    },
-    {
-      label: '',
-      value: engine.charAt(0).toUpperCase() + engine.slice(1),
-      iconName: 'petrol',
-    },
-    {
-      label: '',
-      value:
-        details.kitchen > 0
-          ? details.kitchen === 1
-            ? 'Kitchen'
-            : `${details.kitchen} kitchens`
-          : '',
-      iconName: 'kitchen',
-    },
-    {
-      label: details.beds === 1 ? 'bed' : 'beds',
-      value: details.beds,
-      iconName: 'bed',
-    },
-    {
-      label: '',
-      value: details.airConditioner > 0 ? 'AC' : '',
-      iconName: 'airContainer',
-    },
-  ];
+  const camperPros = generateCamperPros(camper);
 
   return (
     <>
@@ -123,7 +91,9 @@ const CamperCard = ({ camper, handleOpenModal }) => {
 
         <button
           className={css.showMore}
-          onClick={() => handleOpenModal(camper._id)}
+          onClick={() =>
+            openModal('camper_modal', <CamperModal camper={camper} />)
+          }
         >
           Show more
         </button>

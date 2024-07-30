@@ -1,20 +1,22 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import css from './Filter.module.css';
 
 import Iconsvg from '../Icon/Icon';
-import { useDispatch, useSelector } from 'react-redux';
+import { selectFilter } from '../../redux/filter/selectors';
 import {
   clearFilters,
   setDetails,
   setForm,
   setLocation,
 } from '../../redux/filter/slice';
-import { selectFilter } from '../../redux/filter/selectors';
+import { selectCampers } from '../../redux/camper/selectors';
 
-const Filter = ({ allAdverts }) => {
+const Filter = () => {
+  const allAdverts = useSelector(selectCampers);
   const dispatch = useDispatch();
   const { location, form, details } = useSelector(selectFilter);
   const [cities, setCities] = useState([]);

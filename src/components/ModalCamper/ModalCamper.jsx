@@ -1,27 +1,19 @@
 import { useState } from 'react';
 
-import css from './CamperModal.module.css';
+import css from './ModalCamper.module.css';
 
-import ModalWindow from '../../modal/ModalWindow';
 import Iconsvg from '../Icon/Icon';
 import BookingForm from '../BookingForm/BookingForm';
 import AdvantagesList from '../AdvantagesList/AdvantagesList';
 import CamperTable from '../CamperTable/CamperTable';
 import ReviewsList from '../ReviewsList/ReviewsList';
-import CamperImage from '../CamperImage/CamperImage';
+import CamperImage from '../ModalImage/ModalImage';
+import { useModalContext } from '../../context/useModalContext';
 
 const CamperModal = ({ camper }) => {
   const [activeTab, setActiveTab] = useState('Features');
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [imageIndex, setImageIndex] = useState(0);
 
-  const openModal = idx => {
-    setImageIndex(idx);
-    setModalIsOpen(true);
-  };
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
+  const { openModal } = useModalContext();
 
   const handleTabChange = tabName => {
     setActiveTab(tabName);
@@ -51,7 +43,12 @@ const CamperModal = ({ camper }) => {
                 src={image}
                 alt={camper.name}
                 className={css.camperImg}
-                onClick={() => openModal(idx)}
+                onClick={() =>
+                  openModal(
+                    'images_modal',
+                    <CamperImage images={camper.gallery} imageIndex={idx} />
+                  )
+                }
               />
             </li>
           ))}
@@ -98,9 +95,6 @@ const CamperModal = ({ camper }) => {
           <BookingForm />
         </div>
       </div>
-      <ModalWindow isOpen={modalIsOpen} closeModal={closeModal}>
-        <CamperImage images={camper.gallery} imageIndex={imageIndex} />
-      </ModalWindow>
     </div>
   );
 };

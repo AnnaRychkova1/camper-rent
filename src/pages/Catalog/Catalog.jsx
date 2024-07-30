@@ -1,84 +1,41 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-
 import css from './Catalog.module.css';
 
-import ModalWindow from '../../modal/ModalWindow';
 import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
 import Filter from '../../components/Filter/Filter';
-import CamperCard from '../../components/CamperCard/CamperCard';
-import Loader from '../../components/Loader/Loader';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import CamperModal from '../../components/CamperModal/CamperModal';
-import {
-  selectFilteredCampers,
-  selectError,
-  selectIsLoading,
-  selectCampers,
-} from '../../redux/camper/selectors';
+import CamperList from '../../components/CamperList/CamperList';
+import { selectFilteredCampers } from '../../redux/camper/selectors';
+import { useEffect } from 'react';
 import { getCampers } from '../../redux/camper/operations';
+import { selectError, selectIsLoading } from '../../redux/camper/selectors';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import Loader from '../../components/Loader/Loader';
 
 const Catalog = () => {
-  const allAdverts = useSelector(selectCampers);
+  const dispatch = useDispatch();
   const adverts = useSelector(selectFilteredCampers);
   const isError = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
-  const [visibleCards, setVisibleCards] = useState(4);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalData, setModalData] = useState({});
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCampers());
   }, [dispatch]);
-
-  const handleLoadMore = () => {
-    setVisibleCards(prevCount => prevCount + 4);
-  };
-
-  const handleOpenModal = _id => {
-    setIsModalOpen(true);
-    setModalData(adverts.filter(camper => camper._id === _id)[0]);
-    openModal();
-  };
-
-  const openModal = () => setIsModalOpen(true);
-
-  const closeModal = () => setIsModalOpen(false);
-
-  console.log(adverts);
 
   return (
     <>
       <DocumentTitle>Catalog</DocumentTitle>
       {isError && <ErrorMessage />}
       {isLoading && <Loader />}
-      <div className={css.container}>
-        <Filter allAdverts={allAdverts} />
-        <div className={css.campersContainer}>
-          {adverts.length === 0 && (
-            <p className={css.noCampersFiltered}>
-              There is no campers matches your search
-            </p>
-          )}
-          <ul className={css.camperList}>
-            {adverts.slice(0, visibleCards).map(camper => (
-              <li className={css.camperItem} key={camper._id}>
-                <CamperCard camper={camper} handleOpenModal={handleOpenModal} />
-              </li>
-            ))}
-          </ul>
-          {visibleCards < adverts.length && (
-            <button className={css.loadMore} onClick={handleLoadMore}>
-              Load more
-            </button>
-          )}
-        </div>
-      </div>
-      <ModalWindow isOpen={isModalOpen} closeModal={closeModal}>
-        <CamperModal camper={modalData} />
-      </ModalWindow>
+      <section className={css.container}>
+        <Filter />
+        {adverts.length === 0 ? (
+          <p className={css.noCampersFiltered}>
+            There is no campers matches your search
+          </p>
+        ) : (
+          <CamperList adverts={adverts} />
+        )}
+      </section>
     </>
   );
 };

@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import css from './CamperImage.module.css';
-import Iconsvg from '../../components/Icon/Icon';
 
-const CamperImage = ({ images, imageIndex }) => {
+import css from './ModalImage.module.css';
+
+import Iconsvg from '../Icon/Icon';
+
+const ModalImage = ({ images, imageIndex }) => {
   const [currentImage, setCurrentImage] = useState(imageIndex);
   const showPrevImage = () => {
     if (currentImage > 0) {
@@ -35,4 +37,4 @@ const CamperImage = ({ images, imageIndex }) => {
   );
 };
 
-export default CamperImage;
+export default ModalImage;

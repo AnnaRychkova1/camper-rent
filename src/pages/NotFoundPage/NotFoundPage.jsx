@@ -4,15 +4,17 @@ import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
 
 const NotFoundPage = () => {
   return (
-    <div className={css.container}>
+    <>
       <DocumentTitle>Not found</DocumentTitle>
-      <p className={css.errorText}>
-        &#x261D;Sorry, the page you visited does not exist!
-      </p>
-      <button className={css.backHome}>
-        <Link to="/">Back home</Link>
-      </button>
-    </div>
+      <section className={css.container}>
+        <p className={css.errorText}>
+          &#x261D;Sorry, the page you visited does not exist!
+        </p>
+        <button className={css.backHome}>
+          <Link to="/">Back home</Link>
+        </button>
+      </section>
+    </>
   );
 };
 

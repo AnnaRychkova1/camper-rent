@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ErrorMessage = ({ message = '' }) => {
   return (
-    <div className={css.errorMessage}>
+    <section className={css.errorMessage}>
       <p className={css.errorText}>
         &#x261D;
         {message.length > 0
@@ -13,7 +13,7 @@ const ErrorMessage = ({ message = '' }) => {
       <button className={css.backHome}>
         <Link to="/">Back home</Link>
       </button>
-    </div>
+    </section>
   );
 };
 

@@ -1,21 +1,29 @@
 import Modal from 'react-modal';
 import css from './ModalWindow.module.css';
 import Iconsvg from '../components/Icon/Icon';
+import { useModalContext } from '../context/useModalContext';
 
 Modal.setAppElement('#root');
 
-const ModalWindow = ({ children, isOpen, closeModal }) => {
+const ModalWindow = ({ modalName }) => {
+  const { isOpen, closeModal, modalContent } = useModalContext();
+
   return (
     <Modal
-      isOpen={isOpen}
-      onRequestClose={closeModal}
+      isOpen={isOpen[modalName]}
+      onRequestClose={() => closeModal(modalName)}
       className={css.modalContent}
       overlayClassName={css.modalBackdrop}
+      closeTimeoutMS={200}
+      ariaHideApp={false}
     >
-      <button className={css.modalCloseButton} onClick={closeModal}>
+      <button
+        className={css.modalCloseButton}
+        onClick={() => closeModal(modalName)}
+      >
         <Iconsvg iconName="close" className={css.iconClose} />
       </button>
-      <>{children}</>
+      <>{modalContent[modalName]}</>
     </Modal>
   );
 };
