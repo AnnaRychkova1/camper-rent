@@ -28,9 +28,9 @@ const Favorites = () => {
             Explore and enjoy your favorite choices!
           </p>
         )}
-        <Link to="/catalog" className={css.backToCatalog}>
-          Back to Catalog
-        </Link>
+        <button type="button" className={css.backToCatalog}>
+          <Link to="/catalog">Back to Catalog</Link>
+        </button>
         <CamperList adverts={favorites} />
         {favorites.length === 0 && (
           <>

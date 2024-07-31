@@ -1,4 +1,4 @@
-export const generateCamperAdvantages = camper => {
+const generateCamperAdvantages = camper => {
   const {
     adults = '',
     transmission = '',
@@ -114,3 +114,5 @@ export const generateCamperAdvantages = camper => {
     },
   ];
 };
+
+export default generateCamperAdvantages;

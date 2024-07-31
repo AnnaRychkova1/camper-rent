@@ -10,7 +10,7 @@ const NotFoundPage = () => {
         <p className={css.errorText}>
           &#x261D;Sorry, the page you visited does not exist!
         </p>
-        <button className={css.backHome}>
+        <button type="button" className={css.backHome}>
           <Link to="/">Back home</Link>
         </button>
       </section>

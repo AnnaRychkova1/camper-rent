@@ -1,6 +1,6 @@
 import css from './AdvantagesList.module.css';
 import Iconsvg from '../Icon/Icon';
-import { generateCamperAdvantages } from '../../utils/camperAdvantages';
+import generateCamperAdvantages from '../../utils/camperAdvantages';
 
 const AdvantagesList = ({ camper }) => {
   const camperAdvantages = generateCamperAdvantages(camper);

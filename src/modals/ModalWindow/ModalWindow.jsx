@@ -1,7 +1,7 @@
 import Modal from 'react-modal';
 import css from './ModalWindow.module.css';
-import Iconsvg from '../components/Icon/Icon';
-import { useModalContext } from '../context/useModalContext';
+import Iconsvg from '../../components/Icon/Icon';
+import { useModalContext } from '../../context/useModalContext';
 
 Modal.setAppElement('#root');
 
@@ -18,6 +18,7 @@ const ModalWindow = ({ modalName }) => {
       ariaHideApp={false}
     >
       <button
+        type="button"
         className={css.modalCloseButton}
         onClick={() => closeModal(modalName)}
       >

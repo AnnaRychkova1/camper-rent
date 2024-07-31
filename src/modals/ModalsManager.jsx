@@ -1,4 +1,4 @@
-import ModalWindow from './ModalWindow';
+import ModalWindow from '../modals/ModalWindow/ModalWindow';
 
 const ModalsManager = () => {
   return (

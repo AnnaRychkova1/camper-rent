@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 
 import { Layout } from './Layout';
-import ModalsManager from './modal/ModalsManager';
+import ModalsManager from './modals/ModalsManager';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const Catalog = lazy(() => import('./pages/Catalog/Catalog'));

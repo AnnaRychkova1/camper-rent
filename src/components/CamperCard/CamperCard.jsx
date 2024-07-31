@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import css from './CamperCard.module.css';
 
 import Iconsvg from '../Icon/Icon';
-import CamperModal from '../ModalCamper/ModalCamper';
+import ModalCamper from '../../modals/ModalCamper/ModalCamper';
 import { addFavorite, removeFavorite } from '../../redux/favorite/slice';
 import { selectFavorites } from '../../redux/favorite/selectors';
 import generateCamperPros from '../../utils/camperPros';
@@ -90,9 +90,10 @@ const CamperCard = ({ camper }) => {
         </ul>
 
         <button
+          type="button"
           className={css.showMore}
           onClick={() =>
-            openModal('camper_modal', <CamperModal camper={camper} />)
+            openModal('camper_modal', <ModalCamper camper={camper} />)
           }
         >
           Show more

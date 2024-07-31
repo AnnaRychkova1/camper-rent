@@ -37,7 +37,8 @@
   transition: var(--anim);
 }
 
-.backHome:hover {
+.backHome:active,
+.backHome:focus-visible {
   color: var(--main-color);
   background-color: var(--accent-color);
 }
@@ -50,6 +51,7 @@
     padding: 100px 64px;
     background-size: 768px 640px;
   }
+
   .backHome {
     top: 32px;
     right: 100px;
@@ -57,9 +59,13 @@
   }
 }
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1440px) {
   .errorMessage {
     width: 1440px;
     background-size: cover;
+  }
+  .backHome:hover {
+    color: var(--main-color);
+    background-color: var(--accent-color);
   }
 }

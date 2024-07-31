@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import css from './ModalImage.module.css';
 
-import Iconsvg from '../Icon/Icon';
+import Iconsvg from '../../components/Icon/Icon';
 
 const ModalImage = ({ images, imageIndex }) => {
   const [currentImage, setCurrentImage] = useState(imageIndex);
@@ -24,13 +24,19 @@ const ModalImage = ({ images, imageIndex }) => {
 
   return (
     <div className={css.modalBody}>
-      <button className={css.back} onClick={showPrevImage}>
+      <button type="button" className={css.back} onClick={showPrevImage}>
         <Iconsvg iconName="arrowLeft" className={css.arrow} />
       </button>
       {Array.isArray(images) && images.length > 0 && (
-        <img className={css.image} src={images[currentImage]}></img>
+        <div className={css.imgContainer}>
+          <img
+            className={css.image}
+            alt="camper"
+            src={images[currentImage]}
+          ></img>
+        </div>
       )}
-      <button className={css.next} onClick={showNextImage}>
+      <button type="button" className={css.next} onClick={showNextImage}>
         <Iconsvg iconName="arrowRight" className={css.arrow} />
       </button>
     </div>

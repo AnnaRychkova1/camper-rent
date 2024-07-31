@@ -11,9 +11,9 @@ const Home = () => {
         <h2 className={css.subtitle}>
           Book a camper today and start your adventure!
         </h2>
-        <Link className={css.bookLink} to="/catalog">
-          Book
-        </Link>
+        <button type="button" className={css.bookLink}>
+          <Link to="/catalog">Book</Link>
+        </button>
       </section>
     </>
   );

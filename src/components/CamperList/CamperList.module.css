@@ -43,7 +43,8 @@
   transition: var(--anim);
 }
 
-.loadMore:hover {
+.loadMore:active,
+.loadMore:focus-visible {
   border-color: var(--accent-color);
 }
 
@@ -69,5 +70,9 @@
     flex-direction: row;
     width: 888px;
     height: 358px;
+  }
+
+  .loadMore:hover {
+    border-color: var(--accent-color);
   }
 }

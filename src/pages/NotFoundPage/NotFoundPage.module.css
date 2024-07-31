@@ -36,7 +36,8 @@
   transition: var(--anim);
 }
 
-.backHome:hover {
+.backHome:focus-visible,
+.backHome:active {
   color: var(--main-color);
   background-color: var(--accent-color);
 }
@@ -61,5 +62,10 @@
   .container {
     width: 1440px;
     background-size: cover;
+  }
+
+  .backHome:hover {
+    color: var(--main-color);
+    background-color: var(--accent-color);
   }
 }

@@ -53,19 +53,6 @@
   justify-content: center;
 }
 
-@media only screen and (min-width: 768px) {
-  .field {
-    width: 574px;
-    max-width: 100%;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .field {
-    width: 400px;
-  }
-}
-
 .field::placeholder {
   font-weight: 400;
   font-size: 16px;
@@ -90,7 +77,8 @@
   border: none;
 }
 
-.buttonCalendar:hover .iconCalendar {
+.buttonCalendar:active .iconCalendar,
+.buttonCalendar:focus-visible .iconCalendar {
   stroke: var(--accent-color);
 }
 
@@ -133,6 +121,28 @@
   transition: var(--anim);
 }
 
-.submitButton:hover {
+.submitButton:active,
+.submitButton:focus-visible {
   background-color: var(--accent-second-color);
+}
+
+@media only screen and (min-width: 768px) {
+  .field {
+    width: 574px;
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .field {
+    width: 400px;
+  }
+
+  .buttonCalendar:hover .iconCalendar {
+    stroke: var(--accent-color);
+  }
+
+  .submitButton:hover {
+    background-color: var(--accent-second-color);
+  }
 }

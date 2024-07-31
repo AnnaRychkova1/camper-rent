@@ -38,6 +38,7 @@
   top: 32px;
   right: 10%;
   border: 2px solid var(--accent-color);
+  background-color: transparent;
   padding: 10px 32px;
   border-radius: 200px;
   font-weight: 700;
@@ -46,7 +47,8 @@
   transition: var(--anim);
 }
 
-.backToCatalog:hover {
+.backToCatalog:focus-visible,
+.backToCatalog:active {
   color: var(--main-color);
   background-color: var(--accent-color);
 }
@@ -107,5 +109,10 @@
 
   .favoriteTitle {
     margin-top: 0px;
+  }
+
+  .backToCatalog:hover {
+    color: var(--main-color);
+    background-color: var(--accent-color);
   }
 }

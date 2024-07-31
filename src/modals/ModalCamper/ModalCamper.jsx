@@ -2,15 +2,15 @@ import { useState } from 'react';
 
 import css from './ModalCamper.module.css';
 
-import Iconsvg from '../Icon/Icon';
-import BookingForm from '../BookingForm/BookingForm';
-import AdvantagesList from '../AdvantagesList/AdvantagesList';
-import CamperTable from '../CamperTable/CamperTable';
-import ReviewsList from '../ReviewsList/ReviewsList';
+import Iconsvg from '../../components/Icon/Icon';
+import BookingForm from '../../components/BookingForm/BookingForm';
+import AdvantagesList from '../../components/AdvantagesList/AdvantagesList';
+import CamperTable from '../../components/CamperTable/CamperTable';
+import ReviewsList from '../../components/ReviewsList/ReviewsList';
 import CamperImage from '../ModalImage/ModalImage';
 import { useModalContext } from '../../context/useModalContext';
 
-const CamperModal = ({ camper }) => {
+const ModalCamper = ({ camper }) => {
   const [activeTab, setActiveTab] = useState('Features');
 
   const { openModal } = useModalContext();
@@ -38,7 +38,7 @@ const CamperModal = ({ camper }) => {
       <div className={css.modalInfo}>
         <ul className={css.imgContainer}>
           {camper.gallery.map((image, idx) => (
-            <li key={idx}>
+            <li className={css.imageWrapper} key={idx}>
               <img
                 src={image}
                 alt={camper.name}
@@ -99,4 +99,4 @@ const CamperModal = ({ camper }) => {
   );
 };
 
-export default CamperModal;
+export default ModalCamper;

@@ -10,7 +10,7 @@ const ErrorMessage = ({ message = '' }) => {
           ? message
           : 'Whoops, something went wrong! Please try reloading this page!'}
       </p>
-      <button className={css.backHome}>
+      <button type="button" className={css.backHome}>
         <Link to="/">Back home</Link>
       </button>
     </section>

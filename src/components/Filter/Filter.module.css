@@ -166,7 +166,8 @@
   transition: var(--anim);
 }
 
-.searchButton:hover {
+.searchButton:active,
+.searchButton:focus-visible {
   background-color: var(--accent-second-color);
 }
 
@@ -233,6 +234,10 @@
   .locationInput {
     padding: 18px 18px 18px 48px;
     width: 360px;
+  }
+
+  .searchButton:hover {
+    background-color: var(--accent-second-color);
   }
 }
 

@@ -20,7 +20,7 @@ const CamperList = ({ adverts }) => {
         ))}
       </ul>
       {visibleCards < adverts.length && (
-        <button className={css.loadMore} onClick={handleLoadMore}>
+        <button type="button" className={css.loadMore} onClick={handleLoadMore}>
           Load more
         </button>
       )}
